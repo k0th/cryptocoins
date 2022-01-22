@@ -1,0 +1,141 @@
+.container{
+    display: flex;
+    background-color: rgb(184, 207, 226);
+    flex-direction: row;
+    font-weight: 600;
+    color:rgb(70, 74, 80);
+    align-items: center;
+}
+.item1{
+    flex:1;
+    text-align: center;
+}
+.item2{
+    flex:1;
+    text-align: center;
+}
+.item3{
+    flex:1;
+    text-align: center;
+}
+
+/*---------------------------------------------*/
+
+.containercoins{
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+    color:rgb(70, 74, 80);
+    align-items: center;
+}
+
+.item5{
+    flex:1;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 6px;
+}
+.subitem5{
+    text-align: left;
+    background-color: white;
+    margin: 50px
+}
+
+.item6{
+    flex:1;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 6px;
+}
+.subitem6{
+    text-align: left;
+    background-color: white;
+    margin: 50px
+}
+.item7{
+    flex:1;
+    text-align: center;
+    background-color: white;
+    padding: 10px;
+    margin: 30px;
+    border-radius: 6px;
+}
+.subitem7{
+    text-align: left;
+    background-color: white;
+    margin: 50px
+}
+.divitem7{
+    justify-content: center;
+}
+/*---------------------------------------------*/
+
+.containerconvertion{
+    display: flex;
+    flex-direction: row;
+    font-weight: 600;
+    color:rgb(70, 74, 80);
+    align-items: center;
+    background-color: white;
+    padding: 10px;
+    margin:30px;
+    border-radius: 6px;
+}
+.item8{
+    flex:1;
+    text-align: center;
+}
+.item9{
+    flex:1;
+    text-align: center;
+}
+.item10{
+    flex:1;
+    text-align: center;
+
+}
+.item11{
+    flex:1;
+    text-align: center;
+
+}
+
+/*---------------------------------------------*/
+
+.form{
+    background-color: black;
+    border-radius: 3px;
+    color: rgb(85, 85, 85);
+    padding: 20 px;
+    margin: 0 auto;
+    width: 440px;
+    height: 40px;
+    text-align: center;
+
+}
+.input{
+    border-radius: 3px;
+    border-style:solid;
+    border-width: thin;
+    border-color: rgb(226, 226, 226);
+    padding: 10px 40 px;
+    width: 300px;
+    height: 40px;
+    margin: 8px
+}
+
+/*---------------------------------------------*/
+
+.title{
+    color:rgb(70, 74, 80);
+    text-align: center;
+    margin-top: 30px;
+}
+.title1{
+    color:rgb(70, 74, 80);
+    text-align: center;
+}
