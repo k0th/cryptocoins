@@ -11,24 +11,34 @@ export default function Dashboard ({database}) {
     //States for crypto coins 
     const[cBTC, setcBTC] = useState([])
     const[cETH, setcETH] = useState([])
-    const[cXRP, setXRP] = useState([])
+    const[cXRP, setcXRP] = useState([])
     //States operations
-    const[cCFinal, setcCFinal] = useState()
+    const[cCFinalBTC, setcCFinalBTC] = useState()
     const[cCFinalETH, setcCFinalETH] = useState()
     const[cCFinalXRP, setcCFinalXRP] = useState()
    
+    //Operation Variables 
     let convertionFinalBTC 
     let convertionFinalETH 
     let convertionFinalXRP
     
     useEffect(()=>{
-        axios.get("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,XRP&tsyms=USD")
-        .then((response)=>{ 
-            setApiCrypto(response.data.DISPLAY)
-            setcBTC([response.data.DISPLAY.BTC.USD])
-            setcETH([response.data.DISPLAY.ETH.USD])
-            setXRP([response.data.DISPLAY.XRP.USD])
-        })
+        
+        function repeat() {
+           let time = setInterval(repeatCharge, 1000);
+          }
+          
+          function repeatCharge() {
+            axios.get("https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,XRP&tsyms=USD")
+            .then((response)=>{ 
+                setApiCrypto(response.data.DISPLAY)
+                setcBTC([response.data.DISPLAY.BTC.USD])
+                setcETH([response.data.DISPLAY.ETH.USD])
+                setcXRP([response.data.DISPLAY.XRP.USD])
+            })
+          }
+
+          repeat()
     },[])
 
 
@@ -39,24 +49,24 @@ export default function Dashboard ({database}) {
             ...calConvertion,
             [e.target.name]:e.target.value,
         })
+        //Cryptocurrency conversion calculation
+        let priceBTC = apiCrypto.BTC.USD.PRICE //Price
+        let priceBTCnosymbol =  priceBTC.slice(1,priceBTC.length)//Remove the symbol $
+        setcCFinalBTC(priceBTCnosymbol.replaceAll(',', '')) //Remove the symbol , and save the result
 
-        let priceBTC = apiCrypto.BTC.USD.PRICE
-        let priceBTCnosymbol =  priceBTC.slice(1,priceBTC.length)
-        setcCFinal(priceBTCnosymbol.replaceAll(',', ''))
+        let priceETH = apiCrypto.ETH.USD.PRICE//Price
+        let priceETHnosymbol =  priceETH.slice(1,priceETH.length)//Remove the symbol $
+        setcCFinalETH(priceETHnosymbol.replaceAll(',', ''))//Remove the symbol , and save the result
 
-        let priceETH = apiCrypto.ETH.USD.PRICE
-        let priceETHnosymbol =  priceETH.slice(1,priceETH.length)
-        setcCFinalETH(priceETHnosymbol.replaceAll(',', ''))
-
-        let priceXRP = apiCrypto.XRP.USD.PRICE
-        let priceXRPnosymbol =  priceXRP.slice(1,priceXRP.length)
-        setcCFinalXRP(priceXRPnosymbol.replaceAll(',', ''))
+        let priceXRP = apiCrypto.XRP.USD.PRICE//Price
+        let priceXRPnosymbol =  priceXRP.slice(1,priceXRP.length)//Remove the symbol $
+        setcCFinalXRP(priceXRPnosymbol.replaceAll(',', ''))//Remove the symbol , and save the result
     }
     
     //--------------Convertions--------------------------------------------------------------------------
-    convertionFinalBTC = Number(calConvertion.calc)*cCFinal
-    convertionFinalETH = Number(calConvertion.calc)*cCFinalETH
-    convertionFinalXRP = Number(calConvertion.calc)*cCFinalXRP
+    convertionFinalBTC = Number(calConvertion.calc)*cCFinalBTC //Variable that shows the result of the calculation
+    convertionFinalETH = Number(calConvertion.calc)*cCFinalETH //Variable that shows the result of the calculation
+    convertionFinalXRP = Number(calConvertion.calc)*cCFinalXRP //Variable that shows the result of the calculation
     //----------------------------------------------------------------------------------------------------
 
     return (
